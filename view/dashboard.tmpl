@@ -1,0 +1,90 @@
+{{define "title"}}Dashboard{{end}}
+{{define "body"}}
+<ul class="nav nav-tabs tabs">
+	<li class="active"><a data-toggle="tab" href="#tab1">ALL</a></li>
+	<li><a data-toggle="tab" href="#tab2">STARTUP</a></li>
+	<li><a data-toggle="tab" href="#tab3">PERSONAL</a></li>
+	<li><a data-toggle="tab" href="#tab4">WORK</a></li>
+</ul>
+
+<div class="tab-content tabs">
+    <div id="tab1" class="tab-pane fade in active">
+        {{range $i,$item:=.list}}
+            <div class="bubble">
+                <a href="{{ $item.weburl }}" target="_blank">{{ $item.text }}</a>
+                <div class="tags">
+                    <img src="../public/images/ic_tag.png">
+                    {{range $j,$keyword:=$item.keywords}}
+                        <a href="/tag?tag={{ $keyword.text }}">{{ $keyword.text }}</a>
+                    {{end}}
+                </div>
+                <div class="time-title">
+                    <span style="margin-right: 6px">{{ $item.created_at }}</span>
+                    &#8226;
+                    <span style="margin-left: 6px">{{ $item.webtitle }}</span>
+                </div>
+            </div>
+        {{end}}
+    </div>
+    <div id="tab2" class="tab-pane fade">
+        {{range $i,$item:=.list}}
+            {{if eq $item.tab.startup true}}
+                <div class="bubble">
+                    <a href="{{ $item.weburl }}" target="_blank">{{ $item.text }}</a>
+                    <div class="tags">
+                        <img src="../public/images/ic_tag.png">
+                        {{range $j,$keyword:=$item.keywords}}
+                            <a href="/tag?tag={{ $keyword.text }}">{{ $keyword.text }}</a>
+                        {{end}}
+                    </div>
+                    <div class="time-title">
+                        <span style="margin-right: 6px">{{ $item.created_at }}</span>
+                        &#8226;
+                        <span style="margin-left: 6px">{{ $item.webtitle }}</span>
+                    </div>
+                </div>
+            {{end}}
+        {{end}}
+    </div>
+    <div id="tab3" class="tab-pane fade">
+        {{range $i,$item:=.list}}
+            {{if eq $item.tab.personal true}}
+                <div class="bubble">
+                    <a href="{{ $item.weburl }}" target="_blank">{{ $item.text }}</a>
+                    <div class="tags">
+                        <img src="../public/images/ic_tag.png">
+                        {{range $j,$keyword:=$item.keywords}}
+                            <a href="/tag?tag={{ $keyword.text }}">{{ $keyword.text }}</a>
+                        {{end}}
+                    </div>
+                    <div class="time-title">
+                        <span style="margin-right: 6px">{{ $item.created_at }}</span>
+                        &#8226;
+                        <span style="margin-left: 6px">{{ $item.webtitle }}</span>
+                    </div>
+                </div>
+            {{end}}
+        {{end}}
+    </div>
+    <div id="tab4" class="tab-pane fade">
+        {{range $i,$item:=.list}}
+            {{if eq $item.tab.work true}}
+                <div class="bubble">
+                    <a href="{{ $item.weburl }}" target="_blank">{{ $item.text }}</a>
+                    <div class="tags">
+                        <img src="../public/images/ic_tag.png">
+                        {{range $j,$keyword:=$item.keywords}}
+                            <a href="/tag?tag={{ $keyword.text }}">{{ $keyword.text }}</a>
+                        {{end}}
+                    </div>
+                    <div class="time-title">
+                        <span style="margin-right: 6px">{{ $item.created_at }}</span>
+                        &#8226;
+                        <span style="margin-left: 6px">{{ $item.webtitle }}</span>
+                    </div>
+                </div>
+            {{end}}
+        {{end}}
+    </div>
+</div>
+{{end}}

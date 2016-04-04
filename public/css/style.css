@@ -1,0 +1,346 @@
+@import url("http://fonts.googleapis.com/css?family=Lato");
+* {
+  margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+ul {
+	list-style-type: none;
+}
+
+body {
+	overflow-x: hidden;
+	margin-bottom: 20px;
+}
+
+.container {
+	padding-right: 40px;
+	padding-left: 40px;
+}
+
+.wrapper .left-menu-toggle {
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.wrapper.toggled #leftmenu {
+    width: 250px;
+}
+
+.wrapper.toggled .page-content {
+    margin-left: 250px;
+}
+.wrapper.toggled .left-menu-toggle {
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+#leftmenu {
+	padding-top: 20px;
+	z-index: 1000;
+	width: 0;
+	position: fixed;
+	left: 250px;
+	height: 100%;
+    margin-left: -250px;
+	overflow-y: auto;
+	background: rgba(216, 255, 0, 0.63);
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#leftmenu .account {
+	display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+#leftmenu .account .avatar {
+	display: inline-block;
+}
+#leftmenu .account .avatar img {
+	width: 41px;
+	height: 41px;
+	border-radius: 50%;
+}
+
+#leftmenu .account .name-account {
+	vertical-align: middle;
+	font-size: 20px;
+	font-family: 'Helvetica Neue';
+}
+#leftmenu .menu {
+	margin-top: 20px;
+	font-size: 25px;
+}
+#leftmenu .menu li {
+	padding-left: 20px;
+    margin-bottom: 10px;
+}
+#leftmenu .menu li:hover {
+	background-color: #fff;
+}
+#leftmenu .menu a {
+	text-decoration: none;
+	color: #555;
+	display: block;
+}
+
+.page-content {
+	width: 100%;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#header {
+	padding-top: 10px;
+}
+
+#header.homepage {
+	background: linear-gradient(#fefe89, #eaf4af);
+}
+
+#header.homepage .main-logo {
+    display: inline-block;
+    margin: 0;
+    margin-left: 55px;
+    vertical-align: middle;
+}
+
+#header.homepage .google-login-logo {
+	position: relative;
+    left: 100%;
+    -webkit-transform: translateX(-184%);
+	-ms-transform: translateX(-184%);
+    transform: translateX(-184%);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.navbar {
+	height: 40px;
+}
+.navbar .left-menu-toggle {
+	padding: 0 45px;
+	display: inline-block;
+    vertical-align: super;
+}
+.navbar .left-menu-toggle .fa {
+	font-size: 45px;
+	color: #D2E01D;
+}
+
+.navbar .highlight-text-search {
+	width: 73%;
+	display: inline-block;
+	/*margin-right: 25px;*/
+	vertical-align: text-bottom;
+}
+.navbar .highlight-text-search input {
+	width: 95%;
+	height: 53px;
+	border-radius: 8px;
+    padding: 7px 20px;
+    background: #EDECEC;
+    box-shadow: 0px 3px 5px rgba(136, 136, 136, 0.65);
+    border: none;
+    color: #858585;
+    font-family: 'Helvetica Neue';
+    font-size: 14px;
+}
+.navbar .highlight-text-search input:focus {
+	outline: none;
+}
+
+.navbar .account {
+	display: inline-block;
+	position: relative;
+}
+.navbar .account .avatar {
+	display: inline-block;
+	float: left;
+}
+.navbar .account .avatar img {
+	width: 41px;
+	height: 41px;
+	border-radius: 50%;
+}
+
+.navbar .account .name-account {
+	float: left;
+	position: absolute;
+	display: inline-block;
+	min-width: 170px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	font-family: 'Helvetica Neue';
+	font-size: 20px;
+	color: #5C5C5C;
+}
+
+.slogan {
+	text-align: center;
+	margin-top: 81px;
+    margin-bottom: 81px;
+	font-family: 'Helvetica Neue';
+}
+
+.tabs li {
+	margin-top: 10px;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+.tabs li.active {
+	margin-top: 4px;
+}
+
+.tabs li a {
+	float: left;
+	display: block;
+	margin-right: 10px;
+	border-radius: 8px 8px 0px 0px;
+	-moz-border-radius: 8px 8px 0px 0px;
+	-webkit-border-radius: 8px 8px 0px 0px;
+	border: 0px solid #000000;
+	overflow: hidden;
+	background: #DCDCDC;
+	color: #555;
+	height: 48px;
+	text-transform: uppercase;
+	line-height: 33px;
+}
+
+.tabs li.active a {
+	padding-top: 14px;
+	padding-bottom: 14px;
+	background: -moz-linear-gradient(left, #FFFE8A, #E3FC4B);
+	background: linear-gradient(to right, #FFFE8A, #E3FC4B);
+	font-size: 14px;
+	color: #5C5C5C;
+	height: 53px;
+}
+
+.tabs.tab-content {
+	/*padding: 25px;*/
+	background: rgba(243, 234, 248, 0.57);
+	height: 500px;
+	overflow-y: scroll;
+	font-family: "Helvetica Neue";
+}
+.tabs.tab-content .bubble {
+	/*width: 298px;*/
+	font-size: 15px;
+	color: #5C5C5C;
+	/*border-radius: 20px;*/
+	/*-moz-border-radius: 20px;*/
+	/*-webkit-border-radius: 20px;*/
+	border-bottom: 1px solid #ccc;
+	/*display: inline-block;*/
+	/*float: left;*/
+	/*margin-right: 45px;*/
+	/*margin-bottom: 10px;*/
+	background: #f5f5f5;
+	padding: 19px 96px;
+	position: relative;
+	opacity: 0.8;
+}
+.tabs.tab-content .bubble:hover {
+	background: -moz-linear-gradient(#FFFE8A, #E3FC4B 57%);
+	background: linear-gradient(#FFFE8A, #E3FC4B 57%);
+}
+.tabs.tab-content .bubble > a {
+	text-decoration: none;
+	color: #555;
+	font-size: 19px;
+}
+.tabs.tab-content .bubble .tags {
+	margin: 10px 0;
+}
+.tabs.tab-content .bubble .tags > a {
+	margin-left: 10px;
+}
+.tabs.tab-content .bubble .tags img {
+	width: 16px;
+	height: 16px;
+}
+.tabs.tab-content .bubble .tags {
+	font-family: "Helvetica Neue";
+	font-size: 12px;
+	color: #6F6E6E;
+}
+.tabs.tab-content .bubble .bubble-overlay {
+	position: absolute;
+	display: none;
+	width: 298px;
+	opacity: 0.7;
+	background: #000000;
+	font-family: "Helvetica Neue";
+	font-size: 23px;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	left: 0;
+	top: 100%;
+	text-align: center;
+	padding: 10px 0;
+}
+.tabs.tab-content .bubble .bubble-overlay a {
+	display: inline-block;
+	color: #FFFE8A;
+}
+.tabs.tab-content .bubble:hover .bubble-overlay {
+	display: block;
+}
+
+
+.tabs.tab-content .bubble .left-bubble-symbol,
+.tabs.tab-content .bubble .right-bubble-symbol {
+	position: absolute;
+	font-size: 20px;
+	top: 12px;
+}
+.tabs.tab-content .bubble .left-bubble-symbol {
+	left: 15px;
+}
+.tabs.tab-content .bubble .right-bubble-symbol {
+	right: 15px;
+}
+
+.homepage-content {
+	margin-top: 125px;
+}
+
+.homepage-content .left,
+.homepage-content .right {
+	display: inline-block;
+}
+
+.homepage-content .left {
+	margin-right: 40px;
+	vertical-align: top;
+}
+.homepage-content .left img {
+	width: 650px;
+	height: 380px;
+}
+
+.homepage-content .right {
+	vertical-align: top;
+}

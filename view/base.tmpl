@@ -1,0 +1,68 @@
+<html>
+<head>
+	<meta charget="utf-8">
+	<title>{{block "title".}}{{end}}</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../public/js/isotope.pkgd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/style.css">
+</head>
+<body>
+	<div class="wrapper">
+		{{if .user}}
+		<div id="leftmenu">
+			<div class="account">
+				<span class="avatar"><img src="{{.user.avatar}}"></span>
+				<span class="name-account">{{.user.name}}</span>
+			</div>
+			<ul class="menu">
+				{{if .user}}
+				<li><a href="#">Settings</a></li>
+				<li><a href="/logout">Log Out</a></li>
+				{{end}}
+			</ul>
+		</div>
+		{{end}}
+		<div class="page-content">
+			{{if .user}}
+			<div id="header">
+				<div class="navbar">
+					<a href="#" class="left-menu-toggle"><i class="fa fa-bars"></i></a>
+					<div class="highlight-text-search">
+						<form action="/search" method="GET">
+							<input type="text" name="k" placeholder="Search Highlights...">
+						</form>
+					</div>
+					<div class="account">
+						<span class="avatar"><img src="{{.user.avatar}}"></span>
+						<span class="name-account">{{.user.name}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="slogan">
+				<h1 style="margin-bottom: 10px;font-weight: normal;font-size: 24px;color: #5C5C5C">CORATE</h1>
+				<p style="margin-top: 0;font-size: 14px;color: #9E9E9E">Organizing Modern Knowledge</p>
+			</div>
+			{{else}}
+			<div id="header" class="homepage">
+				<h3 class="main-logo">corate</h3>
+				<a href="/login" class="google-login-logo"><img src="../public/images/btn_sign_in_google.png"></a>
+			</div>
+			{{end}}
+			<div class="container">
+				{{block "body".}}{{end}}
+			</div>
+		</div>
+	</div>
+	{{if .user}}
+	<script type="text/javascript">
+		$(".left-menu-toggle").click(function(e) {
+			e.preventDefault();
+			$(".wrapper").toggleClass("toggled");
+		});
+	</script>
+	{{end}}
+</body>
+</html>
