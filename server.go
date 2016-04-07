@@ -32,6 +32,10 @@ func main(){
 		negroni.HandlerFunc(route.IsAuthenticated),
 		negroni.Wrap(http.HandlerFunc(route.DashboardHandler)),
 	))
+	http.Handle("/logout",negroni.New(
+		negroni.HandlerFunc(route.IsAuthenticated),
+		negroni.Wrap(http.HandlerFunc(route.LogoutHandler)),
+	))
 
 	// Quote routes
 	http.Handle("/api/on",negroni.New(
@@ -41,6 +45,10 @@ func main(){
 	http.Handle("/api/create",negroni.New(
 		negroni.HandlerFunc(route.IsAuthenticated),
 		negroni.Wrap(http.HandlerFunc(route.SaveQuoteHandler)),
+	))
+	http.Handle("/api/delete",negroni.New(
+		negroni.HandlerFunc(route.IsAuthenticated),
+		negroni.Wrap(http.HandlerFunc(route.DeleteQuoteHandler)),
 	))
 	http.Handle("/tag",negroni.New(
 		negroni.HandlerFunc(route.IsAuthenticated),

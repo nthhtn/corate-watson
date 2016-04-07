@@ -71,3 +71,12 @@ func SendUserHandler(w http.ResponseWriter,r *http.Request){
 	}
 	w.Write(resp)
 }
+
+func LogoutHandler(w http.ResponseWriter,r *http.Request){
+	fmt.Println(r.Method," ",r.URL)
+	session, _ := util.GlobalSessions.SessionStart(w, r)
+	defer session.SessionRelease(w)
+
+	util.GlobalSessions.SessionDestroy(w,r)
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
+}

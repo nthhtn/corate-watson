@@ -22,6 +22,14 @@ func UpdateQuote(id string,data interface{}) r.WriteResponse{
 	return result
 }
 
+func DeleteQuote(id string) r.WriteResponse{
+	result,err:=r.Table("quote").Get(id).Delete().RunWrite(config.Connection())
+	if err!=nil{
+		fmt.Println(err)
+	}
+	return result
+}
+
 func GetQuotesByUser(idUser string) []map[string]interface{}{
 	result,err:=r.Table("quote").Filter(r.Row.Field("idUser").Eq(idUser)).
 		OrderBy(r.Desc("created_at")).

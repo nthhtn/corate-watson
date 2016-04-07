@@ -30,7 +30,7 @@ func SendQuotesHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	data:=struct{
-		URL string
+		URL string `json:"url"`
 	}{}
 	err=json.NewDecoder(bytes.NewReader(raw)).Decode(&data)
 	if err!=nil{
@@ -186,6 +186,42 @@ func SaveQuoteHandler(w http.ResponseWriter,r *http.Request){
 		}
 		w.Write(resp)
 	}
+}
+
+func DeleteQuoteHandler(w http.ResponseWriter,r *http.Request){
+	fmt.Println(r.Method," ",r.URL)
+	session, _ := util.GlobalSessions.SessionStart(w, r)
+	defer session.SessionRelease(w)
+	
+	w.Header().Set("Access-Control-Allow-Origin","*")
+	w.Header().Set("Access-Control-Allow-Methods","POST")
+	w.Header().Set("Access-Control-Allow-Headers","Content-Type")
+	w.Header().Set("Content-Type","application/json")
+
+	// Decode request body
+	raw,err:=ioutil.ReadAll(r.Body)
+	defer r.Body.Close()
+	if err!=nil{
+		http.Error(w,err.Error(),http.StatusInternalServerError)
+		return
+	}
+	data:=struct{
+		IdQuote string `json:"idQ"`
+	}{}
+	err=json.NewDecoder(bytes.NewReader(raw)).Decode(&data)
+	if err!=nil{
+		http.Error(w,err.Error(),http.StatusInternalServerError)
+		return
+	}
+
+	// Delete quote
+	res:=model.DeleteQuote(data.IdQuote)
+	resp,err:=json.Marshal(map[string]interface{}{"deleted":res.Deleted})
+	if err!=nil{
+		http.Error(w,err.Error(),http.StatusInternalServerError)
+		return
+	}
+	w.Write(resp)
 }
 
 func TagHandler(w http.ResponseWriter,r *http.Request){
